@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct idineApp: App {
     // @StateObject property wrapper is responsible for keeping the object alive throughout the life of our app
-    @StateObject var order = new Order()
+    @StateObject var order = Order()
     
     var body: some Scene {
         WindowGroup {
