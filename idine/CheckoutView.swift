@@ -14,6 +14,7 @@ struct CheckoutView: View {
     @State private var addLoyaltyDetails = false
     @State private var loyaltyNumber = ""
     @State private var tipAmount = 15
+    @State private var showingPaymentAlert = false
     
     let paymentTypes = ["Cash", "Credit Card", "iDine Points"]
     let tipAmounts = [0, 10, 15, 20, 25]
@@ -47,12 +48,17 @@ struct CheckoutView: View {
             }
             Section("Total: \(totalPrice)") {
                 Button("Confirm") {
-                    
+                    showingPaymentAlert.toggle()
                 }
             }
         }
         .navigationTitle("Payment")
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Order confirmed", isPresented: $showingPaymentAlert) {
+            
+        } message: {
+            Text("Your total was \(totalPrice) - thank you")
+        }
     }
 }
 
