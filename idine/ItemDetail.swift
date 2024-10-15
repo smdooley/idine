@@ -40,6 +40,20 @@ struct ItemDetail: View {
         }
         .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
+            toggleFavourite()
+        }) {
+            Image(systemName: order.isFavourite(item: item) ? "heart.fill" : "heart")
+                .foregroundColor(order.isFavourite(item: item) ? .red : .gray)
+        })
+    }
+    
+    func toggleFavourite() {
+        if order.isFavourite(item: item) {
+            order.removeFavourite(item: item)
+        } else {
+            order.addFavourite(item: item)
+        }
     }
 }
 
